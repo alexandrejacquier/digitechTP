@@ -28,6 +28,8 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.use(express.static('frontend/build'));
+
 // GET
 app.get('/api/auth', auth, (req,res) => {
     res.json({
@@ -256,6 +258,15 @@ app.delete('/api/deleteFormulaire', (req,res) => {
         res.json(true);
     });
 })*/
+
+
+if(process.env.NODE_ENV === 'production'){
+    const path = require('path');
+    app.get('/*', () => {
+        res.sendfile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
+    })
+}
+
 
 const port = process.env.port || 3001;
 app.listen(port, () => {
