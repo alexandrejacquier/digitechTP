@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 import { getSociete } from '../actions';
 
-//import { getFormulairesBySociete } from '../actions';
+import { updateSociete } from '../actions';
 
  class SocieteContainer extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            id: '',
             name: '',
             adresse: '',
             PDC: '',
@@ -26,17 +27,56 @@ import { getSociete } from '../actions';
     }
 
     componentWillReceiveProps(nextProps){
-        //console.log(nextProps.societe.societe);
+        console.log(nextProps.societe.societe);
         this.setState({...nextProps.societe.societe});
+    }
+
+    handleInput = (event,name) => {
+        let value = event.target.value;
+        this.setState({[name]:value});
+    }
+
+    submitForm = (e) => {
+        e.preventDefault();
+        this.props.dispatch(updateSociete(this.state))
+        this.props.history.push('/');
     }
 
     render() {
         if(this.state.name !== ''){
             return (
                 <div className="PageContent">
-                    <h1>{this.state.name}</h1>
-                    <p>Adresse : {(this.state.adresse && this.state.adresse !== '') ? this.state.adresse : 'Non renseignée'}</p>
-                    <p>Personne de contact : {(this.state.PDC && this.state.PDC !== '') ? this.state.PDC : 'Non renseignée'}</p>
+                    <div className="EditSocietePageContent">
+                    <form onSubmit={this.submitForm}>
+                        <div className="form_element">
+                            <label>Nom : </label>
+                            <input
+                                id="name"
+                                value={this.state.name}
+                                onChange={(event)=>this.handleInput(event,'name')}
+                            />
+                        </div>
+                        <div className="form_element">
+                            <label>Adresse : </label>
+                            <input
+                                id="adresse"
+                                value={this.state.adresse}
+                                onChange={(event)=>this.handleInput(event,'adresse')}
+                            />
+                        </div>
+                        <div className="form_element">
+                            <label>Personne de contact : </label>
+                            <input
+                                id="PDC"
+                                value={this.state.PDC}
+                                onChange={(event)=>this.handleInput(event,'PDC')}
+                            />
+                        </div>
+                        <div className="Btn">
+                            <a onClick={this.submitForm}>Enregistrer</a>
+                        </div>
+                    </form>
+                    </div>
                 </div>
             )
         }

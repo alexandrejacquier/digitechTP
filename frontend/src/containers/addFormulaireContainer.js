@@ -69,8 +69,7 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
         }
 
         this.props.dispatch(addFormulaire(reqFormulaire));
-
-        this.props.history.push('/');
+        //Indiquer si il y a une erreur ou non, enlever les formulaires correctement ajoutés
     }
 
     SaveAllChanges = () => {
@@ -81,6 +80,7 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
             console.log('FORMULAIRE DATA TO ADD: '+ this.state.formulaires[i]);
             this.sendUpdateFormulaire(this.state.formulaires[i]);
         }
+        this.props.history.push('/');
     }
 
     AddFormulaire = () => {

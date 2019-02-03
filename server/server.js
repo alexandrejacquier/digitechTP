@@ -98,46 +98,6 @@ app.get('/api/getFormulaire', (req,res) => {
     //console.log(JSON.stringify(doc));
 })
 
-/*app.get('/api/getBook', (req,res) => {
-    let id = req.query.id;
-
-    Book.findById(id, (err,doc) => {
-        if(err) return res.status(400).send(err);
-        res.send(doc);
-    })
-})*/
-
-/*app.get('/api/getBooks', (req,res) => {
-    let skip = parseInt(req.query.skip);
-    let limit = parseInt(req.query.limit);
-    let order = req.query.order;
-
-    if(typeof skip != "undefined" && typeof limit != "undefined" && typeof order != "undefined"){
-        Book.find().sort({createdAt:order}).skip(skip).limit(limit).exec( (err,doc) => {
-            if(err) return res.status(400).send(err);
-            res.send(doc)
-        })
-    }
-    else{
-        return res.status(400).send("parameters needed");
-    }
-})*/
-
-/*app.get('/api/getReviewer',(req,res)=>{
-    let id = req.query.id;
-
-    User.findById(id,(err,doc)=>{
-        if(err) return res.status(400).send(err);
-        if(doc === null) return res.json({
-            response: 'No match for that user id'
-        });
-        res.json({
-            name: doc.name,
-            lastname: doc.lastname
-        })
-    })
-})*/
-
 // POST
 app.post('/api/register', (req,res) => {
     const user = new User(req.body);
@@ -200,19 +160,6 @@ app.post('/api/formulaire', (req,res) => {
     });
 });
 
-/*app.post('/api/book', (req,res) => {
-    const book = new Book(req.body);
-
-    book.save( (err,doc) => {
-        if(err) return res.status(400).send(err);
-        res.status(200).json({
-            post:true,
-            bookId: doc._id
-        });
-    });
-});*/
-
-
 
 // UPDATE
 app.post('/api/updateSociete', (req,res) => {
@@ -235,17 +182,6 @@ app.post('/api/updateFormulaire', (req,res) => {
     });
 })
 
-/*app.post('/api/book_update', (req,res) => {
-    Book.findByIdAndUpdate(req.body._id, req.body, {new:true}, (err,doc) => {
-        if(err) return res.status(400).send(err);
-        res.json({
-            success: true,
-            doc
-        });
-    });
-})*/
-
-
 // DELETE
 app.delete('/api/deleteSociete', (req,res) => {
     Societe.findByIdAndRemove(req.query.id, (err,doc) => {
@@ -260,13 +196,6 @@ app.delete('/api/deleteFormulaire', (req,res) => {
         res.json(true);
     });
 })
-
-/*app.delete('/api/book_delete', (req,res) => {
-    Book.findByIdAndRemove(req.query.id, (err,doc) => {
-        if(err) return res.status(400).send(err);
-        res.json(true);
-    });
-})*/
 
 
 if(process.env.NODE_ENV === 'production'){
