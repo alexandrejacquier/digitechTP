@@ -6,7 +6,7 @@ class EditFormulaire extends Component {
         let date = new Date(inDate);
         //("0" + (this.getMonth() + 1)).slice(-2)
         let tmpMonth = ('0' + (date.getMonth()+1)).slice(-2);
-        let tmpDay = date.getDate();
+        let tmpDay = ('0' + (date.getDate())).slice(-2);
         let htmlDate = date.getFullYear()+'-'+tmpMonth+'-'+tmpDay;
 
         //console.log('DATE IS: '+ htmlDate + " FROM: " + inDate)
@@ -54,6 +54,8 @@ class EditFormulaire extends Component {
                     Inv:''
                 //}
             }
+
+        console.log(this.state.date)
     }
 
     //METTRE A JOUR LE STATE
@@ -63,7 +65,8 @@ class EditFormulaire extends Component {
     }
     handleDateInput = (event,name) => {
         this.setState({[name]:event.target.value});
-        //console.log('NEW DATE IS: '+event.target.value)
+        console.log('NEW DATE IS: '+event.target.value)
+        //console.log(this.state.date)
     }
 
     //DEMANDER AU COMPONENT PARENT D'UPDATEFORMULAIRE
