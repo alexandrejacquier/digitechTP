@@ -56,7 +56,7 @@ class Register extends PureComponent {
             user.users.map(item => (
                 <tr key={item._id}>
                     <td>{item.email}</td>
-                    <td>{item.privileges}</td>
+                    <td>{item.privileges ? 'administrateur' : 'utilisateur'}</td>
                 </tr>
             ))
         :null
