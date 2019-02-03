@@ -1,57 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { getSociete } from '../actions';
+
 //import { getFormulairesBySociete } from '../actions';
 
  class SocieteContainer extends Component {
 
-    componentWillMount(){
-        //this.props.dispatch(getFormulairesBySociete('5c4f28897e19e41c4c4fc80d'));
+    constructor(props){
+        super(props);
+        this.state = {
+            name: '',
+            adresse: '',
+            PDC: '',
+            admins:[],
+            users:[]
+        }
     }
 
-    /*renderFormulaires = (formulaires) => {
-        return(
-            formulaires.list ?
+    componentWillMount(){
+        this.props.dispatch(getSociete(this.props.match.params.id)).then(() => {
+            //console.log("DISPATCH ENDED SOCIETE: ");
+            //console.log(this.props.societe);
+        })
+    }
 
-            formulaires.list.map( (item) => {
-            //return(<p key={item._id}>{JSON.stringify(item)}</p>);
-            return(
-                <div key={item._id}>
-                    <p>date: {item.date}</p>
-                    <p>CA: {item.CA}</p>
-                    <p>FA: {item.FA}</p>
-                    <p>CS: {item.CS}</p>
-                    <p>FG: {item.FG}</p>
-                    <p>AF: {item.AF}</p>
-                    
-                    <p>EBITDA: {item.EBITDA}</p>
-                    <p>CCT: {item.CCT}</p>
-                    <p>CLT: {item.CLT}</p>
-                    <p>CF: {item.CF}</p>
-                    <p>Inventaire: {item.Inv}</p>
-
-                    <hr />
-                </div>
-            );
-            })
-
-        : null);
-    }*/
-
-
+    componentWillReceiveProps(nextProps){
+        //console.log(nextProps.societe.societe);
+        this.setState({...nextProps.societe.societe});
+    }
 
     render() {
-        return (
-            <div>
-                {this.renderFormulaires(this.props.formulaires)}
-            </div>
-        )
+        if(this.state.name !== ''){
+            return (
+                <div className="PageContent">
+                    <h1>{this.state.name}</h1>
+                    <p>Adresse : {(this.state.adresse && this.state.adresse !== '') ? this.state.adresse : 'Non renseignée'}</p>
+                    <p>Personne de contact : {(this.state.PDC && this.state.PDC !== '') ? this.state.PDC : 'Non renseignée'}</p>
+                </div>
+            )
+        }
+        else{return null}
     }
 }
 
 function mapStateToProps(state){
     return {
         //formulaires: state.formulaires
+        societe: state.societes
     }
 }
 

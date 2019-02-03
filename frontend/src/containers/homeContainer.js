@@ -19,7 +19,7 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
     //componentWillReceiveProps(nextProps){
         if(this.props.user){
             this.props.dispatch(getSocietes(this.props.user.login.id));
-            console.log("USERS ID: "+this.props.user.login.id);
+            //console.log("USERS ID: "+this.props.user.login.id);
         }
         //this.props.dispatch(getSocietes(''));
     }
@@ -61,13 +61,15 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
 
     render() {
         return (
-            <div className="rl_container">
+            <div className="PageContent">
                 <form>
-                    <label htmlFor="societeSelect">Choisissez la société : </label>
+                    <div className="SS">
+                    <label htmlFor="societeSelect">Choisissez la société</label>
                     <select id='societeSelect' value={this.state.selectedSocieteId} onChange={this.handleSelectSociete}>
                         <option value='' />
                         {this.renderSocietes(this.props.societes)}
                     </select>
+                    </div>
                 </form>
                 { 
                     this.state.selectedSocieteId !== '' ?

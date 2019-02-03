@@ -120,10 +120,13 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
 
     render() {
         return (
-            <div>
+            <div className="AddFormPageContent">
+                <h2>Ajout de formulaires</h2>
                 {this.renderFormulaires()}
-                <button onClick={this.SaveAllChanges}>Enregistrer</button>        
-                <button onClick={this.AddFormulaire}>Nouveau formulaire</button>    
+                <div className="Btn">
+                    <a onClick={this.SaveAllChanges}>Enregistrer</a>
+                    <a onClick={this.AddFormulaire}>Ajouter un formulaire</a>    
+                </div>
             </div>
         )
     }

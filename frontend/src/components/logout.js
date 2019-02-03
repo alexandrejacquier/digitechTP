@@ -12,7 +12,7 @@ const Logout = (props) => {
 
     return (
         <div className="logout_container">
-            Déconnexion en cours
+            <h1>Déconnexion en cours</h1>
         </div>
     )
 }

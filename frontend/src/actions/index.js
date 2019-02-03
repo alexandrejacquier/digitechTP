@@ -73,6 +73,19 @@ export function clearSocietes(){
     }
 }
 
+export function getSociete(Id){
+    const request = axios.get('/api/getSociete', {
+        params: {
+            id: Id
+        }
+    }).then(response => response.data);
+
+    return {
+        type: 'GET_SOCIETE',
+        payload: request
+    }
+}
+
 export function addSociete(societe){
     const request = axios.post('/api/societe',societe)
         .then(response => response.data);

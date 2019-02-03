@@ -24,16 +24,11 @@ import { addSociete } from '../actions';
             ...this.state.formData,
             admins:[this.props.user.login.id]
         }));
+
+        this.props.history.push('/');
     }
 
     handleChange = (event, name) => {
-        /*this.setState(
-            {
-                formData:{
-                    [name]:event.target.value
-                }
-            }
-            );*/
         const newFormData = {
             ...this.state.formData
         }

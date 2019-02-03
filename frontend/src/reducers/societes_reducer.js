@@ -4,6 +4,8 @@ export default function(state={},action){
             return {...state, list:action.payload};
         case 'CLEAR_SOCIETES':
             return {...state, list:action.payload};
+        case 'GET_SOCIETE':
+            return {...state, societe:action.payload};
         case 'ADD_SOCIETE':
             return {...state, newSociete:action.payload};
         case 'CLEAR_NEWSOCIETE':

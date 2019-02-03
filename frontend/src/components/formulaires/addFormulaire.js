@@ -24,11 +24,10 @@ const AddFormulaire = (props) => {
     }
 
     return (
-        <div>
+        <div className="AddFormContainer">
         <form onSubmit={submitForm}>
-                <h2>formulaire {props._id}</h2>
-
                 <div className="form_element">
+                    
                     <input
                         id="dateIn"
                         type="date"
@@ -38,6 +37,7 @@ const AddFormulaire = (props) => {
                 </div>
 
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Chiffre d'affaire"
@@ -46,6 +46,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Frais d'achats"
@@ -54,6 +55,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Charges salariales"
@@ -62,6 +64,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Frais généraux"
@@ -70,6 +73,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Autres frais"
@@ -77,8 +81,8 @@ const AddFormulaire = (props) => {
                         onChange={(event)=>handleNumInput(event,'AF')}
                     />
                 </div>
-                <hr/>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="EBITDA"
@@ -87,6 +91,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Crédits court termes"
@@ -95,6 +100,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Crédits long termes"
@@ -103,6 +109,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Cashflow"
@@ -111,6 +118,7 @@ const AddFormulaire = (props) => {
                     />
                 </div>
                 <div className="form_element">
+                    
                     <input
                         type="number"
                         placeholder="Investissements"

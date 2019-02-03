@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts';
 
 import { getFormulairesBySociete } from '../actions';
 
@@ -80,38 +80,25 @@ import { getFormulairesBySociete } from '../actions';
     }
 
     renderFieldSelect(){
-        //<button onClick={(e) => this.handleFieldSelect(e)}>Change selection</button>
-        /*const checkboxes = Object.keys(this.state.toShow).map(elem => {
+
+        let formFields = Object.keys(this.state.toShow).map(elem => {
             return(
-                <div>
+                <div className="CheckboxesGraphElem" key={elem}>
                     <label>{elem} : </label>
                     <input
                     type="checkbox"
-                    key={elem}
                     name={elem}
-                    value={this.state.toShow[elem]}
-                    handleCheckboxChange={(e) => this.handleFieldSelect(e)}
+                    checked={this.state.toShow[elem]}
+                    onChange={(e) => this.handleFieldSelect(e)}
                     />
                 </div>
             );
         })
 
-        console.log(checkboxes)*/
-
         return(
-            Object.keys(this.state.toShow).map(elem => {
-                return(
-                    <div key={elem}>
-                        <label>{elem} : </label>
-                        <input
-                        type="checkbox"
-                        name={elem}
-                        checked={this.state.toShow[elem]}
-                        onChange={(e) => this.handleFieldSelect(e)}
-                        />
-                    </div>
-                );
-            })
+            <div className="CheckboxesGraph">
+                {formFields}
+            </div>
         );
     }
 
@@ -141,16 +128,18 @@ import { getFormulairesBySociete } from '../actions';
 
         return(
             this.props.formulaires ?
-                <div>
-                    <LineChart width={600} height={300} data={this.state.data}
-                    margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-                        <XAxis dataKey="date" />
-                        <YAxis/>
-                        <CartesianGrid strokeDasharray="3 3"/>
-                        <Tooltip/>
-                        <Legend />
-                        {renderLines}
-                    </LineChart>
+                <div className="FormGraph">
+                    <ResponsiveContainer width="100%" aspect={2.2}>
+                        <LineChart width={600} height={300} data={this.state.data}
+                        margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+                            <XAxis dataKey="date" />
+                            <YAxis/>
+                            <CartesianGrid strokeDasharray="3 3"/>
+                            <Tooltip/>
+                            <Legend />
+                            {renderLines}
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>
             : null
         );
@@ -158,7 +147,7 @@ import { getFormulairesBySociete } from '../actions';
 
     render() {
         return (
-            <div>
+            <div className="GraphContainer">
                 {this.renderFieldSelect()}
                 {this.renderGraph()}
             </div>

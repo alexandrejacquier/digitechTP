@@ -69,6 +69,15 @@ app.get('/api/societesByUser', (req,res) => {
     })
 })
 
+app.get('/api/getSociete', (req,res) => {
+    let id = req.query.id;
+
+    Societe.findOne({_id: id}, (err,docs) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).send(docs);
+    })
+})
+
 app.get('/api/formulairesBySociete', (req,res) => {
     let id = req.query.id;
     let order = req.query.order || 'asc';

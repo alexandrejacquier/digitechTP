@@ -18,7 +18,8 @@ const SidenavItems = (props, {user}) => {
             icon:'user-plus',
             text:'Nouvel utilisateur (admin)',
             link:'/user/register',
-            restricted:true
+            restricted:true,
+            admin:true
         },
         {
             type:'navItem',
@@ -44,16 +45,6 @@ const SidenavItems = (props, {user}) => {
         }
     ]
 
-    /*const items = [
-        {
-            type:'navItem',
-            icon:'home',
-            text:'Home',
-            link:'/',
-            restricted:false
-        }
-    ]*/
-
     const element = (item,i) => (
         <div key={i} className={item.type}>
             <Link to={item.link}
@@ -65,22 +56,37 @@ const SidenavItems = (props, {user}) => {
     )
 
     const showItems = () => (
-        /*user.login ?
+        props.user.login ?
             items.map((item,i)=>{
-                if(user.login.isAuth) {
-                    return !item.exclude ?
+                if(props.user.login.isAuth) {
+                    //console.log(props.user)
+                    if(!item.exclude){
+                        if(props.user.login.privileges || !item.admin)
+                        {
+                            return element(item,i);
+                        }
+                        else{
+                            //return element(item,i);
+                            return null;
+                        }
+                        
+                    }
+                    else{
+                        return null;
+                    }
+                    /*return !item.exclude ?
                         element(item,i)
-                    :null
+                    :null*/
                 } else {
                     return !item.restricted ?
                         element(item,i)
                     :null
                 }
             })
-        :null*/
-        items.map((item,i)=>{
+        :null
+        /*items.map((item,i)=>{
             return element(item,i);
-        })
+        })*/
     )
 
     return (

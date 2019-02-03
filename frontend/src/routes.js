@@ -10,6 +10,7 @@ import EditFormulaireContainer from './containers/editFormulaireContainer.js';
 import AddFormulaireContainer from './containers/addFormulaireContainer.js';
 import Register from './containers/register.js';
 import SocieteGraphContainer from './containers/societeGraphContainer.js';
+import SocieteContainer from './containers/societeContainer.js';
 /*import BookView from './components/Books'
 import Login from './containers/Admin/login'
 import User from './components/Admin'
@@ -31,6 +32,7 @@ const Routes = () => {
                 <Route path="/logout" exact component={Auth(Logout, true)} />
                 <Route path="/user/register" exact component={Auth(Register, true)} />
                 <Route path="/societe/add" exact component={Auth(AddSocieteContainer, true)} />
+                <Route path="/societe/:id" exact component={Auth(SocieteContainer, true)} />
                 <Route path="/formulaire/:id" exact component={Auth(EditFormulaireContainer, true)} />
                 <Route path="/addFormulaires/:id" exact component={Auth(AddFormulaireContainer, true)} />
                 <Route path="/societeGraph/:id" exact component={Auth(SocieteGraphContainer, true)} />

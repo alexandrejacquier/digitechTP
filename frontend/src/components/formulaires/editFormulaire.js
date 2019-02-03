@@ -73,10 +73,7 @@ class EditFormulaire extends Component {
 
         let reqFormulaire = {...this.state};
         reqFormulaire.date = new Date(reqFormulaire.date).toJSON();
-        /*if(this.state._id === ""){
-            delete reqFormulaire._id;
-        }*/
-        //this.state.filter()
+
         for(let elem in reqFormulaire)
         {
             if(reqFormulaire[elem] === ""){
@@ -88,40 +85,15 @@ class EditFormulaire extends Component {
         //console.log(this.state.formdata);
     }
 
-
-    /*componentWillReceiveProps(nextProps){
-        let formulaire = nextProps.formulaire;
-        this.setState({
-            formdata:{
-                _id:formulaire._id,
-                societeId:formulaire.societeId,
-                date:formulaire.date,
-                CA:formulaire.CA,
-                FA:formulaire.FA,
-                CS:formulaire.CS,
-                FG:formulaire.FG,
-                AF:formulaire.AF,
-                EBITDA:formulaire.EBITDA,
-                CCT:formulaire.CCT,
-                CLT:formulaire.CLT,
-                CF:formulaire.CF,
-                Inv:formulaire.Inv
-            }
-        })
-    }*/
-
-    /*componentWillUnmount(){
-        this.props.dispatch(clearBook())
-    }*/
-
     render() {
         //console.log('STATE DATE: '+this.state.date);
         return (
             <div>
             <form onSubmit={this.submitForm}>
-                    <h2>formulaire {this.state._id}</h2>
-
+                    <h2>Edition du formulaire</h2>
+                    
                     <div className="form_element">
+                        <label>Date : </label>
                         <input
                             id="dateIn"
                             type="date"
@@ -131,6 +103,7 @@ class EditFormulaire extends Component {
                     </div>
 
                     <div className="form_element">
+                        <label>Chiffre d'affaire : </label>
                         <input
                             type="number"
                             placeholder="Chiffre d'affaire"
@@ -139,6 +112,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Frais d'achats : </label>
                         <input
                             type="number"
                             placeholder="Frais d'achats"
@@ -147,6 +121,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Charges salariales : </label>
                         <input
                             type="number"
                             placeholder="Charges salariales"
@@ -155,6 +130,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Frais généraux : </label>
                         <input
                             type="number"
                             placeholder="Frais généraux"
@@ -163,6 +139,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Autres frais : </label>
                         <input
                             type="number"
                             placeholder="Autres frais"
@@ -170,8 +147,8 @@ class EditFormulaire extends Component {
                             onChange={(event)=>this.handleNumInput(event,'AF')}
                         />
                     </div>
-                    <hr/>
                     <div className="form_element">
+                        <label>EBITDA : </label>
                         <input
                             type="number"
                             placeholder="EBITDA"
@@ -180,6 +157,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Crédits à court termes : </label>
                         <input
                             type="number"
                             placeholder="Crédits court termes"
@@ -188,6 +166,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Crédits à long termes : </label>
                         <input
                             type="number"
                             placeholder="Crédits long termes"
@@ -196,6 +175,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Cashflow : </label>
                         <input
                             type="number"
                             placeholder="Cashflow"
@@ -204,6 +184,7 @@ class EditFormulaire extends Component {
                         />
                     </div>
                     <div className="form_element">
+                        <label>Investissements : </label>
                         <input
                             type="number"
                             placeholder="Investissements"
