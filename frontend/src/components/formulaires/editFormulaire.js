@@ -193,7 +193,9 @@ class EditFormulaire extends Component {
                         />
                     </div>
 
-                    <button type="submit">Enregistrer</button>
+                    <div className="Btn">
+                        <a onClick={this.submitForm}>Enregistrer</a> 
+                    </div>
                 </form>
             </div>
         )
