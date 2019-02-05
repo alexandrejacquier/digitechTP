@@ -3,19 +3,19 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
-const config = require('./config/config.js').get(process.env.NODE_ENV);
-
-const app = express();
-
-mongoose.Promise = global.Promise;
-mongoose.connect(config.DATABASE);
-
 const { auth } = require('./middleware/auth.js');
 
 const { User } = require('./models/user.js');
 //const { Book } = require('./models/book.js');
 const { Societe } = require('./models/societe.js');
 const { Formulaire } = require('./models/formulaire.js');
+
+const config = require('./config/config.js').get(process.env.NODE_ENV);
+
+const app = express();
+
+mongoose.Promise = global.Promise;
+mongoose.connect(config.DATABASE);
 
 //ENABLING CORS FOR ACCESSING BACKEND FROM ANOTHER PORT
 //POUR DEFINIR LES ORIGINES VALIDES: https://medium.com/@alexishevia/using-cors-in-express-cac7e29b005b
@@ -200,7 +200,7 @@ app.delete('/api/deleteFormulaire', (req,res) => {
 
 if(process.env.NODE_ENV === 'production'){
     const path = require('path');
-    app.get('/*', () => {
+    app.get('/*', (req, res) => {
         res.sendfile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
     })
 }
