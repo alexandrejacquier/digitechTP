@@ -7,10 +7,12 @@ const societeSchema = mongoose.Schema({
         required:true
     },
     adresse:{
-        type:String
+        type:String,
+        default:''
     },
     PDC:{
-        type:String
+        type:String,
+        default:''
     },
     admins:{
         type:Array, //LISTE DES USERID, A VERIFIER. POSSIBLE DE CHANGER EN 1 SEUL USER

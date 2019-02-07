@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
+
 const { auth } = require('./middleware/auth.js');
 
 const { User } = require('./models/user.js');
@@ -52,7 +53,15 @@ app.get('/api/logout', auth, (req,res) => {
 app.get('/api/users', (req,res) => {
     User.find({}, (err,users) => {
         if(err) return res.status(400).send(err);
-        res.status(200).send(users);
+        //users.forEach((u) => {delete u.password})
+        let newUsers = users.map(u => {
+            return {
+                _id: u.id,
+                email: u.email,
+                privileges: u.privileges
+            }
+        })
+        res.status(200).send(newUsers);
     })
 })
 
@@ -160,6 +169,10 @@ app.post('/api/formulaire', (req,res) => {
     });
 });
 
+// UPLOAD CSV
+
+
+
 
 // UPDATE
 app.post('/api/updateSociete', (req,res) => {
@@ -186,7 +199,11 @@ app.post('/api/updateFormulaire', (req,res) => {
 app.delete('/api/deleteSociete', (req,res) => {
     Societe.findByIdAndRemove(req.query.id, (err,doc) => {
         if(err) return res.status(400).send(err);
-        res.json(true);
+
+        Formulaire.find({societeId:req.query.id}).remove().exec((errF,docsF) => {
+            if(errF) return res.status(400).send(errF);
+            res.json(true);
+        })
     });
 })
 

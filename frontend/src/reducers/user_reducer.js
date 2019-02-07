@@ -4,8 +4,6 @@ export default function(state={},action){
             return {...state,login:action.payload}
         case 'USER_AUTH':
             return {...state,login:action.payload}
-        case 'GET_USER_POSTS':
-            return {...state,userPosts:action.payload}
         case 'GET_USER':
             return {...state,users:action.payload}
         case 'USER_REGISTER':

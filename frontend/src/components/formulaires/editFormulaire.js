@@ -60,8 +60,27 @@ class EditFormulaire extends Component {
 
     //METTRE A JOUR LE STATE
     handleNumInput = (event,name) => {
-        let numValue = event.target.value !== "" ? parseInt(event.target.value) : ""
+        /*let numValue = event.target.value !== "" ? parseInt(event.target.value) : ""
         this.setState({[name]:numValue});
+        let tmpEBITDA = (
+            this.state['CA'] - 
+            this.state['FA'] - 
+            this.state['CS'] - 
+            this.state['FG'] - 
+            this.state['AF']
+        );
+        this.setState({EBITDA: tmpEBITDA});*/
+        let numValue = event.target.value !== "" ? parseInt(event.target.value) : ""
+        let tmpState = this.state;
+        tmpState[name] = numValue;
+        tmpState['EBITDA'] = (
+            tmpState['CA'] - 
+            tmpState['FA'] - 
+            tmpState['CS'] - 
+            tmpState['FG'] - 
+            tmpState['AF']
+        );
+        this.setState(tmpState);
     }
     handleDateInput = (event,name) => {
         this.setState({[name]:event.target.value});
@@ -90,6 +109,7 @@ class EditFormulaire extends Component {
 
     render() {
         //console.log('STATE DATE: '+this.state.date);
+        console.log(this.props)
         return (
             <div>
             <form onSubmit={this.submitForm}>
@@ -102,6 +122,7 @@ class EditFormulaire extends Component {
                             type="date"
                             value={this.state.date}
                             onChange={(event)=>this.handleDateInput(event,'date')}
+                            disabled={this.props.disabled}
                         />
                     </div>
 
@@ -112,6 +133,7 @@ class EditFormulaire extends Component {
                             placeholder="Chiffre d'affaire"
                             value={this.state.CA}
                             onChange={(event)=>this.handleNumInput(event,'CA')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -121,6 +143,7 @@ class EditFormulaire extends Component {
                             placeholder="Frais d'achats"
                             value={this.state.FA}
                             onChange={(event)=>this.handleNumInput(event,'FA')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -130,6 +153,7 @@ class EditFormulaire extends Component {
                             placeholder="Charges salariales"
                             value={this.state.CS}
                             onChange={(event)=>this.handleNumInput(event,'CS')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -139,6 +163,7 @@ class EditFormulaire extends Component {
                             placeholder="Frais généraux"
                             value={this.state.FG}
                             onChange={(event)=>this.handleNumInput(event,'FG')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -148,6 +173,7 @@ class EditFormulaire extends Component {
                             placeholder="Autres frais"
                             value={this.state.AF}
                             onChange={(event)=>this.handleNumInput(event,'AF')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -157,6 +183,8 @@ class EditFormulaire extends Component {
                             placeholder="EBITDA"
                             value={this.state.EBITDA}
                             onChange={(event)=>this.handleNumInput(event,'EBITDA')}
+                            disabled={this.props.disabled}
+                            disabled
                         />
                     </div>
                     <div className="form_element">
@@ -166,6 +194,7 @@ class EditFormulaire extends Component {
                             placeholder="Crédits court termes"
                             value={this.state.CCT}
                             onChange={(event)=>this.handleNumInput(event,'CCT')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -175,6 +204,7 @@ class EditFormulaire extends Component {
                             placeholder="Crédits long termes"
                             value={this.state.CLT}
                             onChange={(event)=>this.handleNumInput(event,'CLT')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -184,6 +214,7 @@ class EditFormulaire extends Component {
                             placeholder="Cashflow"
                             value={this.state.CF}
                             onChange={(event)=>this.handleNumInput(event,'CF')}
+                            disabled={this.props.disabled}
                         />
                     </div>
                     <div className="form_element">
@@ -193,12 +224,16 @@ class EditFormulaire extends Component {
                             placeholder="Investissements"
                             value={this.state.Inv}
                             onChange={(event)=>this.handleNumInput(event,'Inv')}
+                            disabled={this.props.disabled}
                         />
                     </div>
 
-                    <div className="Btn">
+                    {/*<div className="Btn">
                         <a onClick={this.submitForm}>Enregistrer</a> 
                     </div>
+                    <div className="Btn">
+                            <a onClick={this.deleteFormulaire}>Supprimer le formulaire</a>
+                    </div>*/}
                 </form>
             </div>
         )

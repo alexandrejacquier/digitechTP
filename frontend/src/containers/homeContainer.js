@@ -54,7 +54,7 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
     
             this.props.societes.list.filter( (item) => {
                 return item._id === this.state.selectedSocieteId;
-            })
+            })[0]
     
             : null);
     }

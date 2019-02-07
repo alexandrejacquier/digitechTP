@@ -88,6 +88,7 @@ const AddFormulaire = (props) => {
                         placeholder="EBITDA"
                         value={props.EBITDA}
                         onChange={(event)=>handleNumInput(event,'EBITDA')}
+                        disabled
                     />
                 </div>
                 <div className="form_element">

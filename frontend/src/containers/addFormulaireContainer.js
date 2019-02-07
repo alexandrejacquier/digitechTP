@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addFormulaire } from '../actions';
+import { addFormulaire, getSociete } from '../actions';
 
 import AddFormulaire from '../components/formulaires/addFormulaire.js';
 
@@ -34,12 +34,19 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
         let numValue = value !== "" ? parseInt(value) : "";
         let tmpState = this.state;
         tmpState.formulaires[form][name] = numValue;
+        tmpState.formulaires[form]['EBITDA'] = (
+            tmpState.formulaires[form]['CA'] - 
+            tmpState.formulaires[form]['FA'] - 
+            tmpState.formulaires[form]['CS'] - 
+            tmpState.formulaires[form]['FG'] - 
+            tmpState.formulaires[form]['AF']
+        );
         this.setState(tmpState);
         
     }
     handleDateInput = (form,value,name) => {
 
-        console.log('NEW DATE IS: '+value)
+        //console.log('NEW DATE IS: '+value)
         //this.setState({[name]:value});
         let tmpState = this.state;
         tmpState.formulaires[form][name] = value;
@@ -47,6 +54,17 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
     }
 
     componentWillMount(){
+        this.props.dispatch(getSociete(this.props.match.params.id));
+    }
+
+    componentWillReceiveProps(nextProps){
+        //console.log(nextProps);
+    }
+    componentDidUpdate(){
+        //console.log(this.props);
+        if(this.props.societe && !this.isUserSocAdmin()){
+            this.props.history.push('/');
+        }
     }
 
     convertDateToHtml = (inDate) => {
@@ -77,7 +95,7 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
 
         for(let i in this.state.formulaires)
         {
-            console.log('FORMULAIRE DATA TO ADD: '+ this.state.formulaires[i]);
+            //console.log('FORMULAIRE DATA TO ADD: '+ this.state.formulaires[i]);
             this.sendUpdateFormulaire(this.state.formulaires[i]);
         }
         this.props.history.push('/');
@@ -105,7 +123,19 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
 
         this.setState(tmpState);
 
-        console.log(this.state);
+        //console.log(this.state);
+    }
+
+    isUserSocAdmin = () => {
+        if(!this.props.societe){return false}
+        if(this.props.societe.admins.some(adm => {return adm === this.props.user.login.id})){
+            //console.log("USER IS ADMIN")
+            return true;
+        }
+        else{
+            //console.log("USER IS USER")
+            return false;
+        }
     }
 
     renderFormulaires(){
@@ -119,6 +149,7 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
     }
 
     render() {
+        if(this.isUserSocAdmin()){
         return (
             <div className="AddFormPageContent">
                 <h2>Ajout de formulaires</h2>
@@ -129,7 +160,15 @@ import AddFormulaire from '../components/formulaires/addFormulaire.js';
                 </div>
             </div>
         )
+        }
+        else{return null}
     }
 }
 
-export default AddFormulaireContainer;
+function mapStateToProps(state){
+    return {
+        societe: state.societes.societe
+    }
+}
+
+export default connect(mapStateToProps)(AddFormulaireContainer);

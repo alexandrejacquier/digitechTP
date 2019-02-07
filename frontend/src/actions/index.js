@@ -129,7 +129,14 @@ export function getFormulairesBySociete(societeId, order){
             id: societeId,
             order: order
         }
-    }).then(response => response.data);
+    }).then(response => {
+        return( response.data.map(fData => {
+            return({
+                ...fData,
+                EBITDA: fData.CA - fData.FA - fData.CS - fData.FG - fData.AF
+            })
+        }))
+    });
 
     return {
         type: 'GET_FORMULAIRESBYSOCIETE',
@@ -142,7 +149,13 @@ export function getFormulaire(id){
         params: {
             id: id
         }
-    }).then(response => response.data);
+    }).then(response => {
+        const fData = response.data;
+            return({
+                ...fData,
+                EBITDA: fData.CA - fData.FA - fData.CS - fData.FG - fData.AF
+            })
+    });
 
     return {
         type: 'GET_FORMULAIRE',

@@ -3,6 +3,7 @@ import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
 
 import Nav from './sidenav/sidenav.js';
+import ConnectedUser from './connectedUser.js';
 
 class Header extends Component {
 
@@ -33,6 +34,7 @@ class Header extends Component {
                         cursor:'pointer'
                     }} />
                 </div>
+                    <ConnectedUser />
                     <Link to="/" className="logo">
                         Digitech TP
                     </Link>

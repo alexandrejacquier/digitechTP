@@ -29,10 +29,10 @@ const formulaireSchema = mongoose.Schema({
         type:Number,
         default:0
     },
-    EBITDA:{
+    /*EBITDA:{
         type:Number,
         default:0
-    },
+    },*/
     CCT:{
         type:Number,
         default:0
