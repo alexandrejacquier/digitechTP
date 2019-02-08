@@ -51,7 +51,9 @@ import axios from 'axios';
         }).then(response => {
             //this.props.history.push()
             console.log(response);
-            this.props.history.push(response.data);
+            //this.props.history.push(response.data);
+            const hostURI = 'http://' + window.location.hostname;
+            window.open(hostURI + response.data);
         });
     
     }

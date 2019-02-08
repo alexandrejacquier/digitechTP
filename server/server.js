@@ -221,8 +221,8 @@ app.get('/api/CSVformulairesBySociete', auth, (req,res) => {
                         setTimeout(function () {
                             fs.unlinkSync(filePath); // delete this file after 300 seconds
                         }, 300000)
-                        //return res.json("/exports/formulaires_"+ id + "_" + dateFormat + ".csv");
-                        return res.json(filePath);
+                        return res.json("/exports/formulaires_"+ id + "_" + dateFormat + ".csv");
+                        //return res.json(filePath);
                     }
                 });
                 //res.send({success: true})
