@@ -61,6 +61,7 @@ import EditFormulaire from '../components/formulaires/editFormulaire.js';
                 <EditFormulaire key={this.props.formulaire._id}
                 societeId={this.props.formulaire.societeId} 
                 saveFormulaire={this.sendUpdateFormulaire}
+                deleteFormulaire={this.deleteFormulaire}
                 formulaire={this.props.formulaire}
                 disabled={(this.isUserSocAdmin() ? '' : "disabled")}/>
 
@@ -74,7 +75,7 @@ import EditFormulaire from '../components/formulaires/editFormulaire.js';
             <div className="PageContent">
                 <div className="EditFormContainer">
                     {this.renderFormulaire()}
-                    {this.isUserSocAdmin() ? 
+                    {/*this.isUserSocAdmin() ? 
                     <div className="Btn">
                         <a onClick={this.sendUpdateFormulaire}>Enregistrer</a> 
                     </div>
@@ -83,7 +84,7 @@ import EditFormulaire from '../components/formulaires/editFormulaire.js';
                     <div className="Btn">
                             <a onClick={this.deleteFormulaire}>Supprimer le formulaire</a>
                     </div>
-                    : null}
+                    : null*/}
                 </div>
         </div>
         )

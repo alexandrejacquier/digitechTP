@@ -53,12 +53,8 @@ export function userRegister(user,userList){
 }
 
 //SOCIETE
-export function getSocietes(userId){
-    const request = axios.get('/api/societesByUser', {
-        params: {
-            id: userId
-        }
-    }).then(response => response.data);
+export function getSocietes(){
+    const request = axios.get('/api/societesByUser').then(response => response.data);
     //console.log(`/api/societesByUser?id=${userId}`);
 
     return {

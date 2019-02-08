@@ -18,7 +18,7 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
     componentWillMount(){
     //componentWillReceiveProps(nextProps){
         if(this.props.user){
-            this.props.dispatch(getSocietes(this.props.user.login.id));
+            this.props.dispatch(getSocietes());
             //console.log("USERS ID: "+this.props.user.login.id);
         }
         //this.props.dispatch(getSocietes(''));
@@ -28,13 +28,11 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
         this.setState({selectedSocieteId: event.target.value});
         //console.log(this.state.selectedSociete);
         this.props.dispatch(getFormulairesBySociete(event.target.value, 'desc'));
-
-
     }
 
     renderSocietes = (societes) => {
         return(
-        societes.list ?
+        societes.list && societes.list.length ?
 
         societes.list.map( (item) => {
             //return(<p key={item._id}>{item.name}</p>);
@@ -45,7 +43,8 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
             );
         })
 
-        : null);
+        : null
+        );
     }
 
     getSelectedSociete = () => {

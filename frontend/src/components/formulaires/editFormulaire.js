@@ -55,7 +55,7 @@ class EditFormulaire extends Component {
                 //}
             }
 
-        console.log(this.state.date)
+        //console.log(this.state.date)
     }
 
     //METTRE A JOUR LE STATE
@@ -109,7 +109,7 @@ class EditFormulaire extends Component {
 
     render() {
         //console.log('STATE DATE: '+this.state.date);
-        console.log(this.props)
+        //console.log(this.props)
         return (
             <div>
             <form onSubmit={this.submitForm}>
@@ -228,12 +228,16 @@ class EditFormulaire extends Component {
                         />
                     </div>
 
-                    {/*<div className="Btn">
+                    {this.props.disabled !== 'disabled' ? 
+                    <div className="Btn">
                         <a onClick={this.submitForm}>Enregistrer</a> 
                     </div>
+                    : null}
+                    {this.props.disabled !== 'disabled' ? 
                     <div className="Btn">
-                            <a onClick={this.deleteFormulaire}>Supprimer le formulaire</a>
-                    </div>*/}
+                            <a onClick={this.props.deleteFormulaire}>Supprimer le formulaire</a>
+                    </div>
+                    : null}
                 </form>
             </div>
         )

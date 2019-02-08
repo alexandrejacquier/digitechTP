@@ -7,7 +7,7 @@ const Logout = (props) => {
     .then(request => {
         setTimeout(()=>{
             props.history.push('/');
-        }, 2000);
+        }, 1000);
     });
 
     return (

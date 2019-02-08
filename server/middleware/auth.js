@@ -7,7 +7,7 @@ let auth = (req,res,next) => {
         if(err) throw err;
         if(!user) return res.json({
             error: true,
-            message: 'User is not logged in'
+            message: 'Vous n\'êtes pas connecté'
         });
 
         req.token = token;

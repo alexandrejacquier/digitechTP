@@ -87,12 +87,17 @@ import UserList from '../components/userSelector/userList.js';
 
     getUsersById = (usersId) => {
         if(!this.props.user.users){return null}
-        return(this.props.user.users.filter(usr => {
-            return(
-                usersId.some(uid => uid === usr._id)
+        if(this.props.user.users.length){
+            return(this.props.user.users.filter(usr => {
+                return(
+                    usersId.some(uid => uid === usr._id)
+                );
+            })
             );
-        })
-        );
+        }
+        else{
+            return(usersId.some(uid => uid === this.props.user.users._id));
+        }
     }
 
     deleteSociete = () => {

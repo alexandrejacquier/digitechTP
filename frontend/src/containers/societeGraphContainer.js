@@ -31,7 +31,7 @@ import { getFormulairesBySociete } from '../actions';
         //this.props.dispatch(getFormulairesBySociete(this.props.match.params.societeId));
         //console.log("Searching for formulaire: "+this.props.match.params.id);
         this.props.dispatch(getFormulairesBySociete(this.props.match.params.id)).then(() => {
-            console.log("Formulaires obtenus pour la société: "+ this.props.match.params.id);
+            //console.log("Formulaires obtenus pour la société: "+ this.props.match.params.id);
         });
         
     }
@@ -74,7 +74,7 @@ import { getFormulairesBySociete } from '../actions';
 
         tmpState.toShow[e.target.name] = e.target.checked;
 
-        console.log(tmpState);
+        //console.log(tmpState);
 
         this.setState(tmpState);
     }
