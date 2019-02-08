@@ -255,6 +255,21 @@ app.post('/api/register', auth, (req,res) => {
     }
 });
 
+app.post('/api/registerInitial', (req,res) => {
+    const user = new User(req.body);
+
+    if(req.query.supersecret === 'SecretPass123')
+    {
+        user.save( (err,doc) => {
+            if(err) return res.status(400).send(err);//return res.json({success:false});
+            res.status(200).json({
+                success:true,
+                user: doc
+            });
+        });
+    }
+});
+
 app.post('/api/login', (req,res) => {
     //const user = new User(req.body);
 
