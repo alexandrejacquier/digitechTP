@@ -212,16 +212,17 @@ app.get('/api/CSVformulairesBySociete', auth, (req,res) => {
                 //const filePath = path.join(__dirname, "..", "public", "exports", "formulaires_"+ id + "_" + dateFormat + ".csv")
                 //res.sendfile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
                 const filePath = path.join(__dirname, "..", "frontend", "public", "exports", "formulaires_"+ id + "_" + dateFormat + ".csv")
-                console.log(filePath);
+                //console.log(filePath);
                 fs.writeFile(filePath, csvRetour, function (err) {
                     if (err) {
-                    return res.json(err).status(500);
+                        return res.json(err).status(500);
                     }
                     else {
-                    setTimeout(function () {
-                        fs.unlinkSync(filePath); // delete this file after 300 seconds
-                    }, 300000)
-                    return res.json("/exports/formulaires_"+ id + "_" + dateFormat + ".csv");
+                        setTimeout(function () {
+                            fs.unlinkSync(filePath); // delete this file after 300 seconds
+                        }, 300000)
+                        //return res.json("/exports/formulaires_"+ id + "_" + dateFormat + ".csv");
+                        return res.json(filePath);
                     }
                 });
                 //res.send({success: true})
@@ -483,10 +484,10 @@ if(process.env.NODE_ENV === 'production'){
     //const path = require('path');
     app.get('/exports/*', (req, res) => {
         const pathToExport = path.join(__dirname, "..", "frontend", "public", req.url);
-        console.log("SHOULD SEND EXPORT CSV")
+        //console.log("SHOULD SEND EXPORT CSV")
         //console.log(path.resolve(__dirname, '../frontend', req.url))
         //res.sendFile(path.resolve(__dirname, '../frontend', req.url))
-        console.log(pathToExport);
+        //console.log(pathToExport);
         res.sendFile(pathToExport);
     })
     
