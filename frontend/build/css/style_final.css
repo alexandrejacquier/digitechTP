@@ -35,6 +35,8 @@ header {
     position: relative;
     border-bottom: 6px solid #0F3E4B;
     width: 100%;
+    height: 2.5em;
+    vertical-align: middle;
 }
 
 header .logo {
@@ -43,6 +45,19 @@ header .logo {
     color: #ffffff;
     
     display: block;
+}
+
+header .ConnectedUser {
+    /*display: block;
+    float: left;
+    margin-left: 50px;
+    margin-top:*/
+    position: absolute;
+    left:35px;
+    top: 8px;
+    color: white;
+    /*width: 20%;
+    font-size: 2vw;*/
 }
 
 header .open_nav {
@@ -349,6 +364,7 @@ header .navItem span {
 }
 .EditSocietePageContent .Btn {
     margin-top: 2em;
+    display: inline-block;
 }
 .EditSocietePageContent .Btn a {
     font-size: 20px;
@@ -371,7 +387,7 @@ header .navItem span {
     font-size: 20px;
     padding: 6px 12px;
     font-weight: 400;
-    width: 45%;
+    /*width: 45%;*/
     margin: 0;
     display: inline-block;
 }
