@@ -108,9 +108,12 @@ export function updateSociete(data){
     }
 }
 
-export function deleteSociete(id){
-    const request = axios.delete(`/api/deleteSociete?id=${id}`)
-                    .then(response => response.data);
+export function deleteSociete(Id){
+    const request = axios.delete(`/api/deleteSociete`, {
+        params: {
+            id: Id
+        }
+    }).then(response => response.data);
 
     return {
         type:'DELETE_SOCIETE',

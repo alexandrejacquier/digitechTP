@@ -434,10 +434,12 @@ app.post('/api/updateFormulaire', auth, (req,res) => {
 
 // DELETE
 app.delete('/api/deleteSociete', auth, (req,res) => {
-    Societe.findOne({_id:req.body._id}, (err,doc) => {
+    let id = req.query.id;
+
+    Societe.findOne({_id:id}, (err,doc) => {
         if(err) return res.status(400).send(err);
         if(checkSocRights(doc, req.user, 1)){
-            Societe.findByIdAndRemove(req.query.id, (err,doc) => {
+            Societe.findByIdAndRemove(id, (err,doc) => {
                 if(err) return res.status(400).send(err);
 
                 Formulaire.find({societeId:req.query.id}).remove().exec((errF,docsF) => {
@@ -455,12 +457,13 @@ app.delete('/api/deleteSociete', auth, (req,res) => {
 })
 
 app.delete('/api/deleteFormulaire', auth, (req,res) => {
-    Formulaire.findOne({_id:req.body._id}, (err,doc) => {
+    let id = req.query.id;
+    Formulaire.findOne({_id:id}, (err,doc) => {
         if(err) return res.status(400).send(err);
         Societe.findOne({_id:doc.societeId}, (err,doc) => {
             if(err) return res.status(400).send(err);
             if(checkSocRights(doc, req.user, 1)){
-                Formulaire.findByIdAndRemove(req.query.id, (err,doc) => {
+                Formulaire.findByIdAndRemove(id, (err,doc) => {
                     if(err) return res.status(400).send(err);
                     res.json(true);
                 });

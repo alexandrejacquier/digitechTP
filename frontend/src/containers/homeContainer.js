@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getSocietes, getFormulairesBySociete } from '../actions';
 
 import FormulairesQuickView from '../components/societeQuickView/formulairesQuickView.js';
+import CsvUpDown from '../components/csvupdown/csvupdown.js';
 
  class HomeContainer extends Component {
 
@@ -58,6 +59,10 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
             : null);
     }
 
+    refreshFormulaires = () => {
+        this.props.dispatch(getFormulairesBySociete(this.state.selectedSocieteId, 'desc'));
+    }
+
     render() {
         return (
             <div className="PageContent">
@@ -73,6 +78,12 @@ import FormulairesQuickView from '../components/societeQuickView/formulairesQuic
                 { 
                     this.state.selectedSocieteId !== '' ?
                         <FormulairesQuickView formulaires={this.props.formulaires} societe={this.getSelectedSociete()} {...this.props}/>
+                    :
+                        null
+                }
+                { 
+                    this.state.selectedSocieteId !== '' ?
+                        <CsvUpDown societeId={this.state.selectedSocieteId} societe={this.getSelectedSociete()} refreshFormulaires={this.refreshFormulaires} {...this.props} />
                     :
                         null
                 }
