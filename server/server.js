@@ -478,8 +478,15 @@ app.delete('/api/deleteFormulaire', auth, (req,res) => {
 })
 
 
+
 if(process.env.NODE_ENV === 'production'){
     //const path = require('path');
+    app.get('/exports/*', (req, res) => {
+        //console.log("SHOULD SEND EXPORT CSV")
+        //console.log(path.resolve(__dirname, '../frontend', req.url))
+        res.sendFile(path.resolve(__dirname, '../frontend', req.url))
+    })
+    
     app.get('/*', (req, res) => {
         res.sendfile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
     })
