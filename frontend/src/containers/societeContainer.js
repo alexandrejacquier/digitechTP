@@ -130,11 +130,12 @@ import UserList from '../components/userSelector/userList.js';
         if(this.state.societe.name !== ''){
             return (
                 <div className="PageContent">
-                    <div className="EditSocietePageContent">
+                    <div className="rl_container EditFormContainer EditSociete">
                     <form onSubmit={this.submitForm}>
                         <div className="form_element">
                             <label>Nom : </label>
                             <input
+                                type="text"
                                 id="name"
                                 value={this.state.societe.name}
                                 onChange={(event)=>this.handleInput(event,'name')}
@@ -144,6 +145,7 @@ import UserList from '../components/userSelector/userList.js';
                         <div className="form_element">
                             <label>Adresse : </label>
                             <input
+                                type="text"
                                 id="adresse"
                                 value={this.state.societe.adresse}
                                 onChange={(event)=>this.handleInput(event,'adresse')}
@@ -153,6 +155,7 @@ import UserList from '../components/userSelector/userList.js';
                         <div className="form_element">
                             <label>Personne de contact : </label>
                             <input
+                                type="text"
                                 id="PDC"
                                 value={this.state.societe.PDC}
                                 onChange={(event)=>this.handleInput(event,'PDC')}
@@ -164,7 +167,7 @@ import UserList from '../components/userSelector/userList.js';
                         {this.isUserSocAdmin() ? 
                         <UserSelector 
                             users={this.props.user.users} 
-                            returnUser={this.addSocAdmin}>Ajouter un administrateur : </UserSelector>
+                            returnUser={this.addSocAdmin}>administrateur</UserSelector>
                         : null}
                         <UserList 
                             users={this.getUsersById(this.state.societe.admins)} 
@@ -173,7 +176,7 @@ import UserList from '../components/userSelector/userList.js';
                         {this.isUserSocAdmin() ? 
                         <UserSelector 
                             users={this.props.user.users} 
-                            returnUser={this.addSocUser}>Ajouter un utilisateur : </UserSelector>
+                            returnUser={this.addSocUser}>utilisateur</UserSelector>
                         : null}
                         <UserList 
                             users={this.getUsersById(this.state.societe.users)} 
@@ -181,14 +184,15 @@ import UserList from '../components/userSelector/userList.js';
                             disabled={(this.isUserSocAdmin() ? 'enabled' : "disabled")}/>
 
                         {this.isUserSocAdmin() ? 
-                        <div className="Btn">
-                            <a onClick={this.submitForm}>Enregistrer</a>
+                        <div className="Buttons">
+                            <div className="Btn">
+                                <a onClick={this.submitForm}>Enregistrer</a>
+                            </div>
+
+                            <div className="Btn">
+                                <a onClick={this.deleteSociete}>Supprimer la société</a>
+                            </div> 
                         </div>
-                        : null}
-                        {this.isUserSocAdmin() ? 
-                        <div className="Btn">
-                            <a onClick={this.deleteSociete}>Supprimer la société</a>
-                        </div> 
                         : null}
                     </form>
                     </div>

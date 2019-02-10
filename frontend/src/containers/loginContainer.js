@@ -38,39 +38,41 @@ class LoginContainer extends Component {
     render() {
         let user = this.props.user;
         return (
-            <div className="rl_container">
-                <form onSubmit={this.submitForm}>
-                    <h2>Log in here</h2>
+            <div className="PageContent">
+                <div className="rl_container article">
+                    <form onSubmit={this.submitForm}>
+                        <h2>Veuillez vous connecter</h2>
 
-                    <div className="form_element">
-                        <input 
-                            type="email"
-                            placeholder="Enter your mail"
-                            value={this.state.email}
-                            onChange={this.handleInputEmail}
-                        />
-                    </div>
+                        <div className="form_element">
+                            <input 
+                                type="email"
+                                placeholder="Adresse email"
+                                value={this.state.email}
+                                onChange={this.handleInputEmail}
+                            />
+                        </div>
 
-                    <div className="form_element">
-                        <input 
-                            type="password"
-                            placeholder="Enter your password"
-                            value={this.state.password}
-                            onChange={this.handleInputPassword}
-                        />
-                    </div>
+                        <div className="form_element">
+                            <input 
+                                type="password"
+                                placeholder="Mot de passe"
+                                value={this.state.password}
+                                onChange={this.handleInputPassword}
+                            />
+                        </div>
 
-                    <button type="submit">Log in</button>
+                        <button type="submit">Connexion</button>
 
-                    <div className="error">
-                    {
-                        user.login ? 
-                            <div>{user.login.message}</div>
-                        :null
-                    }
-                    </div>
+                        <div className="error">
+                        {
+                            user.login ? 
+                                <div>{user.login.message}</div>
+                            :null
+                        }
+                        </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
         );
     }

@@ -8,12 +8,13 @@ const Nav = (props) => {
             showNav={props.showNav}
             onHideNav={props.onHideNav}
             navStyle={{
-                background:'#222',
+                background: '#36616C',
                 width:'50%',
                 maxWidth:'15em'
             }}
        >
            <SidenavItems onHideNav={props.onHideNav}/>
+           <div></div>
         </SideNav>
     );
 };

@@ -24,22 +24,24 @@ import axios from 'axios';
     submitForm = (e) => {
         e.preventDefault();
 
-        const data = new FormData();
-        data.append('file', this.state.selectedFile, this.state.selectedFile.name)
-        data.append('societeId', this.props.societeId)
+        if(this.state.selectedFile){
+            const data = new FormData();
+            data.append('file', this.state.selectedFile, this.state.selectedFile.name)
+            data.append('societeId', this.props.societeId)
 
-        axios
-        .post('/api/CSVFormulaires', data, {
-            onUploadProgress: ProgressEvent => {
-            this.setState({
-                loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100,
+            axios
+            .post('/api/CSVFormulaires', data, {
+                onUploadProgress: ProgressEvent => {
+                this.setState({
+                    loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100,
+                })
+                },
             })
-            },
-        })
-        .then(res => {
-            //console.log(res)
-            this.props.refreshFormulaires();
-        })
+            .then(res => {
+                //console.log(res)
+                this.props.refreshFormulaires();
+            })
+        }
     }
 
     getFormulairesCsv = () => {
@@ -75,14 +77,22 @@ import axios from 'axios';
         return (
             <React.Fragment>
             {this.isUserSocAdmin() ? 
-                <div className="rl_container article">
+                <div className="CSVContainer">
                     <form onSubmit={this.submitForm}>
-                        <h2>Ajouter des formulaires par CSV</h2>
-                        <input type="file" name="file" onChange={this.handleselectedFile}/>
-                        <button type="submit">Upload</button>
+                        <h2>Import/export de formulaires CSV</h2>
+                        <label htmlFor="file" className="labelFile" onClick={(e) => this.refs.inputFile.click()}>Sélectionner le fichier CSV</label>
+                        <input type="file" name="file" className="inputFile" onChange={this.handleselectedFile} ref="inputFile"/>
+                        {/*<button type="submit">Upload</button>*/}
+                        <div className="Btn">
+                            <a onClick={this.submitForm}>Uploader</a> 
+                        </div>
+                        <p>{Math.round(this.state.loaded, 2)} % uploadé</p>
                     </form>
-                    <p>{Math.round(this.state.loaded, 2)} % uploadé</p>
-                    <p><button onClick={this.getFormulairesCsv}>Obtenir les formulaires au format CSV</button></p>
+                    <div className="Buttons">
+                        <div className="Btn">
+                            <a onClick={this.getFormulairesCsv}>Obtenir les formulaires au format CSV</a> 
+                        </div>
+                    </div>
                 </div>
             :
                 null

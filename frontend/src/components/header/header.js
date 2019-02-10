@@ -20,10 +20,8 @@ class Header extends Component {
 
     render(){
         return(
+            <div>
             <header>
-                <Nav 
-                showNav={this.state.showNav}
-                onHideNav={() => this.onHideNav()} />
                 <div className="open_nav">
                     <FontAwesome 
                     name="bars"
@@ -38,8 +36,11 @@ class Header extends Component {
                     <Link to="/" className="logo">
                         Digitech TP
                     </Link>
-
             </header>
+            <Nav 
+                showNav={this.state.showNav}
+                onHideNav={() => this.onHideNav()} />
+            </div>
         );
     }
 }

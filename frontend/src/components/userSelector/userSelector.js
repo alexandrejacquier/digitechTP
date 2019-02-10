@@ -47,9 +47,11 @@ class UserSelector extends Component {
     render(){
         return (
             <div>
-                <div className="form_element">
-                    <label>{this.props.children}</label>
+                <div className="form_element userSelector">
+                    {/*<label>{this.props.children}</label>*/}
                     <input
+                        type="text"
+                        placeholder={`email ${this.props.children}`}
                         id="AddUser"
                         value={this.state.email}
                         onChange={this.handleInput}

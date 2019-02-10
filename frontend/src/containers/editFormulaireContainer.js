@@ -73,7 +73,7 @@ import EditFormulaire from '../components/formulaires/editFormulaire.js';
         //console.log(this.props)
         return (
             <div className="PageContent">
-                <div className="EditFormContainer">
+                <div className="rl_container EditFormContainer">
                     {this.renderFormulaire()}
                     {/*this.isUserSocAdmin() ? 
                     <div className="Btn">

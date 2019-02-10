@@ -67,9 +67,9 @@ header .open_nav {
 
 
 header .navItem {
-    font-weight: 300;
+    font-weight: 2000;
     font-size: 12px;
-    color:#bababa;
+    color:white;
     padding:10px;
     border-top: 1px solid #404040;
 }

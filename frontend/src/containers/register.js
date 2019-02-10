@@ -66,57 +66,59 @@ class Register extends PureComponent {
     render() {
         let user = this.props.user;
         return (
-            <div className="rl_container">
-                <form onSubmit={this.submitForm}>
-                    <h2>Ajouter un utilisateur</h2>
-                    
-                    <div className="form_element">
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.handleInputEmail}
-                         />
-                    </div>
+            <div className="PageContent">
+                <div className="rl_container article">
+                    <form onSubmit={this.submitForm}>
+                        <h2>Ajouter un utilisateur</h2>
+                        
+                        <div className="form_element">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.handleInputEmail}
+                            />
+                        </div>
 
-                    <div className="form_element">
-                        <input
-                            type="password"
-                            placeholder="Mot de passe"
-                            value={this.state.password}
-                            onChange={this.handleInputPassword}
-                         />
-                    </div>
+                        <div className="form_element">
+                            <input
+                                type="password"
+                                placeholder="Mot de passe"
+                                value={this.state.password}
+                                onChange={this.handleInputPassword}
+                            />
+                        </div>
 
-                    <div className="form_element">
-                        <select
-                            value={this.state.privileges}
-                            onChange={this.handleInputPrivileges}
-                        >
-                            <option value="0">utilisateur</option>
-                            <option value="1">administrateur</option>
-                        </select>
-                    </div>
+                        <div className="form_element">
+                            <select
+                                value={this.state.privileges}
+                                onChange={this.handleInputPrivileges}
+                            >
+                                <option value="0">utilisateur</option>
+                                <option value="1">administrateur</option>
+                            </select>
+                        </div>
 
-                    <button type="submit">Enregistrer</button>
-                    <div className="error">
-                        {this.state.error}
-                    </div>
+                        <button type="submit">Enregistrer</button>
+                        <div className="error">
+                            {this.state.error}
+                        </div>
 
-                </form>
-                <div className="current_users">
-                    <h4>Utilisateurs existants:</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Email</th>
-                                <th>Privileges</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.showUsers(user)}
-                        </tbody>
-                    </table>
+                    </form>
+                    <div className="current_users">
+                        <h4>Utilisateurs existants:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Privileges</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.showUsers(user)}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         );

@@ -1,0 +1,706 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+
+    background: rgb(240,240,240);
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+a:active,
+a:visited,
+a:focus {
+    color:black
+}
+
+.red_tag {
+    background: #F44336;
+    color: #fff;
+    padding: 10px;
+}
+
+header {
+    padding-top: 0px;
+    background: #36616C;
+    position: relative;
+    border-bottom: 1px solid #0F3E4B;
+    width: 100%;
+    height: 2.5em;
+    vertical-align: middle;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+header .logo {
+    text-align: center;
+    font-size: 22pt;
+    color: white;
+    
+    display: block;
+}
+
+header .ConnectedUser {
+    position: absolute;
+    left:35px;
+    top: 8px;
+    color: white;
+    width: 20%;
+    overflow: hidden;
+}
+
+header .open_nav {
+    position: absolute;
+    left:0px;
+}
+
+.navItem {
+    font-weight: 300;
+    font-size: 0.8em;
+    color:white;
+    background: #36616C;
+    padding:10px;
+    border-top: 1px solid #0F3E4B;
+}
+.navItem:last-child {
+    border-bottom: 1px solid #0F3E4B;
+}
+
+.navItem a {
+    color:inherit;
+    text-decoration: none;
+}
+
+.navItem span {
+    color:white;
+    margin-right:10px;
+}
+
+/*--------------------------------------------------------*/
+
+/*=============================
+            GLOBAL
+===============================*/
+
+.PageContent {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+
+    display: block;
+    /*flex-direction: column;*/
+}
+
+/*=============================
+            HOME
+===============================*/
+
+.SS {
+    font-size: 20px;
+    /*border: 1px solid #0F3E4B;*/
+    border: 1px solid rgb(200,200,200);
+    box-sizing: border-box;
+    /*background: #36616C;*/
+    background: rgb(250,250,250);
+    font-weight: 300;
+    /*color: white;*/
+    border-radius: 0 0 3px 3px;
+}
+.SS label {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    font-size: 33px;
+    font-weight: 400;
+}
+.SS select {
+    display: block;
+    height: 2em;
+    width: 100%;
+    border-radius: 0 0 3px 3px;
+    border: none;
+    /*border-top: 1px solid #0F3E4B;
+    border: 1px solid rgb(200,200,200);
+    background: #36616C;
+
+    color: white;*/
+    border: 1px solid rgb(200,200,200);
+    background: rgb(250,250,250);
+    font-size: 0.8em;
+    font-weight: 400;
+}
+.SS select option {
+    /*color: white;*/
+    font-size: 1em;
+
+    margin: 0;
+}
+.SS select option:checked, 
+.SS select option:hover,
+.SS select option:focus,
+.SS select option:active {
+    /*background: rgb(61, 140, 160);*/
+    background: rgb(250,250,250);
+    font-size: 1em;
+    font-weight: 400;
+
+    margin: 0;
+}
+
+.FQV {
+    /*padding: 0.5em;*/
+    margin-top: 1em;
+}
+.FQV .Head {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    margin-bottom: 1em;
+    padding: 0.5em;
+
+    background: rgb(250,250,250);
+    border-radius: 3px;
+    border: 1px solid rgb(200,200,200);
+}
+.FQV .Head .Info {
+    display: flex;
+    justify-content: space-between;
+    
+    align-items: center;
+}
+.FQV .Head .Buttons {
+    flex-basis: 6em;
+    float: right;
+    vertical-align: middle;
+}
+.FQV .Head .Buttons .Btn{
+    display: inline-block;
+    padding: 6px;
+    font-size:  2em;
+}
+
+
+
+.FQV .Body {
+    padding-top: 0.5em;
+    padding-bottom: 0em;
+    background: rgb(250,250,250);
+    border-radius: 3px;
+    border: 1px solid rgb(200,200,200);
+}
+.FQV table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.FQV tr {
+    width: 100%;
+    
+}
+.FQV .DateInputs {
+    text-align: left;
+    margin: 5px;
+}
+.FQV .ButtonNew {
+    display: inline-block;
+    /*border: 1px solid gray;*/
+    background: rgb(200,200,200);
+    border-radius: 1em;
+    font-size:  1.5em;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.FQV th {
+    padding-bottom: 1em;
+    border-bottom: 1px solid rgb(200,200,200);
+    border-collapse: collapse;
+}
+
+.FQV tbody td {
+    border-top: 1px solid rgb(200,200,200);
+    border-bottom: 1px solid rgb(200,200,200);
+    padding: 0.2em;
+    padding-left: 1em;
+}
+.FQV tbody tr:last-child td {
+    border-bottom: 0px;
+    border-radius: 0 0 3px 3px;
+}
+.FQV tr:nth-child(even) {
+    background-color: rgb(240,240,240);
+}
+.FQV .Button a {
+    display: block;
+    background: rgb(200,200,200);
+    border-radius: 1em;
+
+    cursor: pointer;
+    margin: auto;
+    width: 6em;
+    height: 2em;
+    text-align: center;
+    line-height: 2em;
+    font-weight: 800;
+}
+
+
+
+
+
+.CSVContainer {
+    padding: 0.5em;
+    /*margin: 0.5em;*/
+    margin-top: 1em;
+
+    background: rgb(250,250,250);
+    border-radius: 3px;
+    border: 1px solid rgb(200,200,200);
+
+    text-align: center;
+}
+.CSVContainer h2 {
+    margin-top: 0.25em;
+    text-align: center;
+}
+
+.CSVContainer .Btn {
+    display: inline-block;
+}
+.CSVContainer .Btn a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 32px;
+    background: #02bcd4;
+    color: #fff;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin: 0.2em;
+    margin-top: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.CSVContainer .Buttons {
+    text-align: center;
+}
+.CSVContainer .Buttons .Btn a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 32px;
+    background: #02bcd4;
+    color: #fff;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin: 0.2em;
+    margin-top: 20px;
+    /*width: 90%;*/
+    cursor: pointer;
+    text-align: center;
+}
+
+.CSVContainer .labelFile {
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 32px;
+    background: #02bcd4;
+    color: #fff;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin: 0.2em;
+    margin-top: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+.CSVContainer .inputFile {
+    display: none;
+}
+
+.article {
+    margin-top: 1em;
+}
+
+.rl_container {
+    text-align: center;
+
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    background: rgb(250,250,250);
+    border-radius: 3px;
+    border: 1px solid rgb(200,200,200);
+}
+
+.rl_container .form_element {
+    margin-top: 20px;
+}
+
+
+.rl_container h2 {
+    font-size: 33px;
+    font-weight: 400;
+    color: rgb(20,20,20);
+}
+
+.rl_container input {
+    font-size: 20px;
+    border-radius: 3px;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    background: #f7f7f7;
+    font-weight: 300;
+    width: 260px;
+}
+.rl_container select {
+    font-size: 20px;
+    border-radius: 3px;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    background: #f7f7f7;
+    font-weight: 300;
+    width: 260px;
+}
+.rl_container.article input {
+    width: 80%;
+}
+
+.rl_container.article select {
+    width: 80%;
+    background: #f7f7f7;
+    font-size: 20px;
+    border: 1px solid #e1e1e1;
+}
+
+.rl_container button {
+    font-size: 20px;
+    padding: 10px 32px;
+    background: #02bcd4;
+    color: #fff;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin-top: 20px;
+    width: 260px;
+}
+
+.rl_container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.rl_container td {
+    width: 50%;
+    text-align: left;
+    border: 1px solid rgb(200,200,200);
+    padding: 0.2em;
+    padding-left: 1em;
+}
+
+.rl_container tr:nth-child(even) {
+    background-color: rgb(240,240,240);
+}
+
+.rl_container .error {
+    color: #FF5722;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #d8d8d8;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: #d8d8d8;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: #d8d8d8;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #d8d8d8;
+  }
+
+
+/*=============================
+            GRAPH
+===============================*/
+
+.GraphContainer {
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.GraphContainer .CheckboxesGraph {
+    margin: auto;
+    display: inline-block;
+}
+.GraphContainer .CheckboxesGraph .CheckboxesGraphElem {
+    display: inline-block;
+    margin: 3px;
+    padding: 5px;
+
+    background: rgb(250,250,250);
+    border-radius: 3px;
+    border: 1px solid rgb(200,200,200);
+}
+.GraphContainer .FormGraph {
+    width: 95%;
+    margin: auto;
+}
+
+
+
+
+
+.EditFormContainer {
+    display: flex;
+    
+    padding: 1em;
+    margin: auto;
+    margin-top: 1em;
+}
+.EditFormContainer .EditForm {
+    margin: auto;
+}
+.EditFormContainer .EditSociete {
+    margin: auto;
+}
+.EditFormContainer .form_element {
+    display: inline-block;
+    width: 100%;
+}
+.EditFormContainer label {
+    display: inline-block;
+    width: 12em;
+    text-align: left;
+}
+.EditFormContainer input[type="number"] {
+    text-align: right;
+    width: 60%;
+}
+.EditFormContainer input[type="date"] {
+    text-align: left;
+    width: 60%;
+}
+.EditFormContainer input[type="text"] {
+    text-align: left;
+    width: 60%;
+}
+
+.EditFormContainer .Buttons {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.EditFormContainer .Btn a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 32px;
+    background: #02bcd4;
+    color: #fff;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin: 0.2em;
+    margin-top: 20px;
+    width: 260px;
+    cursor: pointer;
+}
+
+
+.userSelector label {
+    width: 16em;
+    text-align: left;
+}
+.userSelector input[type="text"] {
+    width: 40%;
+}
+.userSelector .Btn {
+    display: inline-block;
+    width: 1em;
+}
+.userSelector .Btn a {
+    width: 1em;
+    padding: 10px 15px;
+}
+
+
+
+
+.logout_container h1{
+    color: #02bcd4;
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+    padding-top: 31px;
+}
+
+/*=============================
+        ADD FORMULAIRES
+===============================*/
+
+.AddFormPageContent {
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    /*background: rgb(250,250,250);*/
+
+    margin: 1%;
+}
+
+.AddFormList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    /*justify-content: space-around;*/
+    row-gap: 1em;
+}
+
+.AddFormContainer {
+    margin-bottom: 0.5em;
+}
+
+.AddFormContainer .form_element {
+    margin: 0px;
+    padding: 0;
+
+    /*width: 25%;*/
+    width: 200px;
+}
+
+
+.AddFormPageContent h2 {
+    font-size: 33px;
+    font-weight: 400;
+    color: rgb(20,20,20);
+}
+
+.AddFormPageContent input {
+    font-size: 20px;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    background: #f7f7f7;
+    font-weight: 300;
+    width: 100%;
+    text-align: right;
+}
+.AddFormPageContent input[type="date"] {
+    text-align: left;
+}
+
+.AddFormPageContent .Buttons {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.AddFormPageContent .Btn a {
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 32px;
+    background: #02bcd4;
+    color: #fff;
+    font-weight: 300;
+    border-radius: 3px;
+    border: none;
+    margin: 0.2em;
+    margin-top: 20px;
+    width: 260px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/*=============================
+            LOADER
+===============================*/
+
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+}
+.loader {
+    color: #ebebeb;
+  font-size: 11px;
+  text-indent: -99999em;
+  margin: 55px auto;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+}
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #ffffff;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.2em 5.1em;
+  transform-origin: 5.2em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: #ffffff;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 5.1em;
+  -webkit-transform-origin: 0px 5.1em;
+  transform-origin: 0px 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

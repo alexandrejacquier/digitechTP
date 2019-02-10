@@ -95,7 +95,7 @@ const AddFormulaire = (props) => {
                     
                     <input
                         type="number"
-                        placeholder="Crédits court termes"
+                        placeholder="Crédits court terme"
                         value={props.CCT}
                         onChange={(event)=>handleNumInput(event,'CCT')}
                     />
@@ -104,7 +104,7 @@ const AddFormulaire = (props) => {
                     
                     <input
                         type="number"
-                        placeholder="Crédits long termes"
+                        placeholder="Crédits long terme"
                         value={props.CLT}
                         onChange={(event)=>handleNumInput(event,'CLT')}
                     />

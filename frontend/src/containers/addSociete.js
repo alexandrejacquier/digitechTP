@@ -41,30 +41,32 @@ import { addSociete } from '../actions';
 
     render() {
         return (
-            <div className="rl_container article">
-                <form onSubmit={this.submitForm}>
-                    <h2>Nouvelle société</h2>
+            <div className="PageContent">
+                <div className="rl_container article">
+                    <form onSubmit={this.submitForm}>
+                        <h2>Nouvelle société</h2>
 
-                    <div className="form_element">
-                        <input type="text"
-                        placeholder="Nom"
-                        value={this.state.formData.name}
-                        onChange={(event) => this.handleChange(event, 'name')}/>
-                    </div>
-                    <div className="form_element">
-                        <input type="text"
-                        placeholder="Adresse"
-                        value={this.state.formData.adresse}
-                        onChange={(event) => this.handleChange(event, 'adresse')}/>
-                    </div>
-                    <div className="form_element">
-                        <input type="text"
-                        placeholder="Personne de contact"
-                        value={this.state.formData.PDC}
-                        onChange={(event) => this.handleChange(event, 'PDC')}/>
-                    </div>
-                    <button type="submit">Enregistrer</button>
-                </form>
+                        <div className="form_element">
+                            <input type="text"
+                            placeholder="Nom"
+                            value={this.state.formData.name}
+                            onChange={(event) => this.handleChange(event, 'name')}/>
+                        </div>
+                        <div className="form_element">
+                            <input type="text"
+                            placeholder="Adresse"
+                            value={this.state.formData.adresse}
+                            onChange={(event) => this.handleChange(event, 'adresse')}/>
+                        </div>
+                        <div className="form_element">
+                            <input type="text"
+                            placeholder="Personne de contact"
+                            value={this.state.formData.PDC}
+                            onChange={(event) => this.handleChange(event, 'PDC')}/>
+                        </div>
+                        <button type="submit">Enregistrer</button>
+                    </form>
+                </div>
             </div>
         )
     }
