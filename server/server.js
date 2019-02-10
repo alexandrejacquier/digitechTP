@@ -212,7 +212,13 @@ app.get('/api/CSVformulairesBySociete', auth, (req,res) => {
                 //const filePath = path.join(__dirname, "..", "public", "exports", "formulaires_"+ id + "_" + dateFormat + ".csv")
                 //res.sendfile(path.resolve(__dirname, '../frontend', 'build', 'index.html'))
                 const filePath = path.join(__dirname, "..", "frontend", "public", "exports", "formulaires_"+ id + "_" + dateFormat + ".csv")
-                //console.log(filePath);
+                console.log(filePath);
+                const dirPath = path.join(__dirname, "..", "frontend", "public", "exports")
+
+                if (!fs.existsSync(dirPath)){
+                    fs.mkdirSync(dirPath);
+                }
+
                 fs.writeFile(filePath, csvRetour, function (err) {
                     if (err) {
                         return res.json(err).status(500);
